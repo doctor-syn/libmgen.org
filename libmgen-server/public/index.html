@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <style>
+        .header {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            height: 70px;
+            font-family: 'Courier New', Courier, monospace;
+            grid-column-gap: 30px;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 200px auto auto;
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            height: 1000px;
+            font-family: 'Courier New', Courier, monospace;
+            grid-column-gap: 30px;
+        }
+
+        .control-bar {
+            padding: 10px;
+            background-color: lightgray;
+            border: 3px solid gray;
+        }
+
+        .source-view {
+            display: grid;
+            grid-template-rows: 50px auto;
+            background-color: lightblue;
+            border: 3px solid gray;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .code-area {
+            background-color: black;
+            color: white;
+            width: 100%;
+            height: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            resize: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>libmgen - A mathematical library generator.</h1>
+    </div>
+    <div class="grid-container">
+        <div class="control-bar">
+            <form>
+                <h3>Language</h3>
+                  <input type="radio" id="lang-rust" name="language" checked="checked">
+                  <label for="lang-rust">Rust</label><br>
+                  <input type="radio" id="lang-C" name="language">
+                  <label for="lang-C">C/C++</label><br>
+                <h3>CPU</h3>
+                  <input type="radio" id="cpu-armv8" name="cpu" checked="checked">
+                  <label for="cpu-armv8">ARM V8</label><br>
+                  <input type="radio" id="cpu-armv7" name="cpu">
+                  <label for="cpu-armv7">ARM V7</label><br>
+                  <input type="radio" id="riscv" name="cpu">
+                  <label for="riscv">Risc V</label><br>
+                  <input type="radio" id="x86-64" name="cpu">
+                  <label for="x86-64">x86-64</label><br>
+                <h3>Function</h3>
+                  <input type="radio" id="sin" name="function" checked="checked">
+                  <label for="sin">sin</label><br>
+                  <input type="radio" id="cos" name="function">
+                  <label for="cos">cos</label><br>
+            </form onchange="alert('xyz')">
+        </div>
+        <div class="source-view">
+            <div>
+                <p>Generated source</p>
+            </div>
+            <div>
+                <textarea id="source-text" class="code-area" autofocus="true">
+                    fn sin(x: f32) -> f32 {
+                        let x = x * (1.0 / (std::f32::consts::PI * 2.0));
+                        let x = x - x.round();
+                        (-f32::from_bits(1058770289u32))
+                            .mul_add(x * x, f32::from_bits(1081164794u32))
+                            .mul_add(x * x, -f32::from_bits(1097945697u32))
+                            .mul_add(x * x, f32::from_bits(1109932662u32))
+                            .mul_add(x * x, -f32::from_bits(1117350231u32))
+                            .mul_add(x * x, f32::from_bits(1117992419u32))
+                            .mul_add(x * x, -f32::from_bits(1109745127u32))
+                            .mul_add(x * x, f32::from_bits(1086918619u32))
+                            * x
+                    }
+                </textarea>
+            </div>
+        </div>
+        <div class="source-view">
+            <div>
+                <p>Generated asm</p>
+            </div>
+            <div>
+                <textarea id="asm-text" class="code-area">
+
+                </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
